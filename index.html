@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.jpg" type="image/icon type">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusinessPk</title>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon" onclick="toggleSidebar()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <a href="#default" class="logo">
+            <img src="image.png" alt="Logo">
+        </a>
+        <div class="header-right" style="text-shadow: 2px 2px 5px rgba(0, 0, 0, 10);">
+            <a href="#home" style="font-size:25px;">Home</a>
+            <a href="#contact" style="font-size:25px;">Archive</a>
+            <a href="#about" style="font-size:25px;">About</a>
+        </div>
+    </div>
+
+    <div id="mySidebar" class="sidebar" style="text-shadow: 2px 2px 5px rgba(0, 0, 0, 4);">
+        <span href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">&times;</span>
+        <a href="#home">Home</a>
+        <a href="#contact">Archive</a>
+        <a href="#about">About</a>
+    </div>
+
+    <!-- Centered Section -->
+    <div class="centered-section">
+        <h1>Welcome to Business Pakistan</h1>
+        <p>At Business Pakistan, our prime objective is to provide the latest and accurate information relevant to business in Pakistan to the people.</p>
+        <p style="margin-top:-20px">At Business Pakistan, we believe that everyone should be aware of the condition of the business environment in Pakistan. To serve this purpose, we play our part with utter integrity and sheer honesty.</p>
+        <p style="margin-top:-20px">If u want to contribute a piece, submit it below:</p>
+        <button class="submit-btn">Submit</button>
+        <div class="submit-arrow">
+            <a href="#contact">
+                <img src="arrow.png" alt="Arrow Head" class="submit-arrow">
+            </a>
+        </div>    
+    </div>
+    <div class="left-arrow" onclick="moveSlide(-1)">
+        <img src="left-arrow.png" alt="Left Arrow" class="left-arrow"> <!-- Left arrow image -->
+    </div>
+    <!-- Image Gallery Section -->
+    <div class="image-gallery-container">
+
+        <div class="image-gallery">
+            <img src="image1.jpg" alt="Image 1" class="gallery-image">
+            <img src="image2.jpg" alt="Image 2" class="gallery-image">
+            <img src="image3.jpg" alt="Image 3" class="gallery-image">
+            <img src="image4.jpg" alt="Image 4" class="gallery-image">
+        </div>
+
+    </div>
+        <div class="right-arrow" onclick="moveSlide(1)">
+            <img src="right-arrow.png" alt="Right Arrow" class="right-arrow"> <!-- Right arrow image -->
+        </div>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("mySidebar");
+            sidebar.style.left = (sidebar.style.left === "0px") ? "-250px" : "0px";
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById("mySidebar");
+            sidebar.style.left = "-250px";
+        }
+
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.gallery-image');
+
+        function moveSlide(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+            if (currentImageIndex >= images.length) currentImageIndex = 0;
+
+            // Hide all images
+            images.forEach((img, index) => {
+                img.style.display = 'none';
+            });
+
+            // Show the current image
+            images[currentImageIndex].style.display = 'block';
+        }
+
+        // Initialize gallery to show the first image
+        moveSlide(0);
+    </script>
+
+    <footer class="footer">
+        <p>&copy; 2025 Business Pakistan. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
